@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Children Education Development Vanguard (CEDV) empowers, educates and inspires school pupils and students through educational and developmental programmes.">
+  <meta name="theme-color" content="#D9251C">
+  <title>CEDV | Empower. Educate. Inspire.</title>
+  <link rel="icon" type="image/png" href="assets/cedv-logo.png">
+  <style>
+    :root {
+      /* CEDV brand palette: red, black, blue, gold and white */
+      --green: #0866C6;       /* legacy token now maps to CEDV blue */
+      --green-dark: #171717;  /* legacy token now maps to brand black */
+      --green-light: #2F80D5;
+      --red: #D9251C;
+      --gold: #F5B400;
+      --cream: #FFFFFF;
+      --ink: #171717;
+      --muted: #626B75;
+      --white: #FFFFFF;
+      --line: #E2E6EB;
+      --shadow: 0 18px 45px rgba(23, 23, 23, .10);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; color: var(--ink); background: #fff; font-family: Inter, "Segoe UI", Arial, sans-serif; line-height: 1.65; }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1140px, calc(100% - 40px)); margin-inline: auto; }
+    .topline { background: var(--green-dark); color: #fff; font-size: .86rem; padding: 8px 0; }
+    .topline .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .topline strong { color: var(--gold); letter-spacing: .04em; }
+    header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(8,102,198,.10); }
+    header:after { content: ""; display: block; height: 3px; background: linear-gradient(90deg, var(--red) 0 34%, var(--gold) 34% 66%, var(--green) 66% 100%); }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
+    .brand img { width: 56px; height: 56px; object-fit: contain; }
+    .brand-name { font-weight: 850; color: var(--green-dark); line-height: 1.1; letter-spacing: -.025em; }
+    .brand-name small { display: block; margin-top: 5px; font-size: .69rem; color: var(--muted); letter-spacing: .12em; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a { text-decoration: none; color: #252A31; font-size: .93rem; font-weight: 650; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links .nav-cta { background: var(--red); color: #fff; padding: 11px 17px; border-radius: 999px; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: #fff; padding: 9px 12px; border-radius: 10px; font-size: 1.25rem; }
+    .hero { overflow: hidden; position: relative; background: radial-gradient(circle at 82% 18%, rgba(245,180,0,.16), transparent 28%), linear-gradient(125deg, #F7FAFD 0%, #FFFFFF 64%, #FFF5F4 100%); padding: 78px 0 76px; }
+    .hero:before { content: ""; position: absolute; width: 420px; height: 420px; border: 1px solid rgba(8,102,198,.10); border-radius: 50%; right: -155px; bottom: -245px; box-shadow: 0 0 0 35px rgba(8,102,198,.025), 0 0 0 75px rgba(8,102,198,.02); }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 55px; position: relative; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green); text-transform: uppercase; letter-spacing: .13em; font-size: .76rem; font-weight: 850; }
+    .eyebrow:before { content: ""; width: 28px; height: 3px; background: var(--red); border-radius: 4px; }
+    h1 { margin: 17px 0 18px; font-size: clamp(2.7rem, 5.3vw, 4.6rem); letter-spacing: -.06em; line-height: 1.04; color: var(--green-dark); }
+    h1 span { color: var(--red); }
+    .hero-copy { max-width: 610px; font-size: 1.12rem; color: #59636F; }
+    .hero-actions { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 30px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 13px 21px; border-radius: 999px; text-decoration: none; font-weight: 750; transition: transform .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--red); color: #fff; box-shadow: 0 9px 22px rgba(217,37,28,.18); }
+    .btn-secondary { border: 1px solid #D0D7E0; color: var(--green); background: rgba(255,255,255,.75); }
+    .hero-note { margin-top: 25px; font-size: .9rem; color: #626B75; }
+    .hero-art { display: flex; justify-content: center; align-items: center; position: relative; }
+    .logo-halo { width: min(100%, 430px); aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #fff; border: 1px solid #f1e4ac; box-shadow: 0 28px 65px rgba(23,23,23,.12), 0 0 0 17px rgba(255,255,255,.6); padding: 22px; }
+    .logo-halo img { width: 100%; height: 100%; object-fit: contain; }
+    .floating-tag { position: absolute; bottom: 8%; left: -2%; padding: 14px 18px; background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); font-size: .86rem; font-weight: 800; color: var(--green); }
+    .floating-tag span { display: block; font-size: .74rem; color: var(--muted); font-weight: 550; }
+    .quick-values { border-bottom: 1px solid var(--line); }
+    .quick-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+    .quick-item { padding: 24px 20px; display: flex; align-items: center; justify-content: center; gap: 12px; border-right: 1px solid var(--line); }
+    .quick-item:last-child { border-right: 0; }
+    .quick-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; color: var(--green); background: #EAF3FE; font-size: 1.2rem; }
+    .quick-item strong { display: block; color: var(--green-dark); }
+    .quick-item small { color: var(--muted); }
+    section { padding: 86px 0; }
+    .section-head { max-width: 700px; margin: 0 auto 42px; text-align: center; }
+    .section-head h2 { font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.12; letter-spacing: -.045em; color: var(--green-dark); margin: 12px 0 14px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 54px; align-items: center; }
+    .about-panel { background: var(--green); color: #fff; border-radius: var(--radius); padding: 34px; position: relative; overflow: hidden; min-height: 340px; display: flex; flex-direction: column; justify-content: space-between; }
+    .about-panel:after { content: "CEDV"; position: absolute; font-size: 8rem; font-weight: 900; letter-spacing: -.08em; right: -10px; bottom: -42px; color: rgba(255,255,255,.07); }
+    .about-panel .big-quote { font-size: 2.4rem; color: var(--gold); line-height: 1; }
+    .about-panel h3 { font-size: 1.8rem; line-height: 1.2; margin: 20px 0 10px; }
+    .about-panel p { color: #E7EDF4; margin-bottom: 0; }
+    .about-copy h2 { font-size: clamp(2rem, 3.2vw, 2.8rem); line-height: 1.15; letter-spacing: -.04em; color: var(--green-dark); margin: 12px 0 20px; }
+    .about-copy p { color: #626B75; }
+    .check-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .check-list li { display: flex; gap: 9px; font-weight: 650; color: #252A31; font-size: .94rem; }
+    .check-list li:before { content: "✓"; display: grid; place-items: center; flex: 0 0 23px; height: 23px; border-radius: 50%; color: var(--green); background: #EAF3FE; font-size: .78rem; font-weight: 900; }
+    .purpose { background: #F5F8FC; }
+    .purpose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .purpose-card { padding: 32px; background: #fff; border: 1px solid #E2E6EB; border-radius: var(--radius); box-shadow: 0 8px 28px rgba(23,23,23,.035); }
+    .purpose-card .mini-label { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 850; color: var(--red); }
+    .purpose-card h3 { color: var(--green-dark); font-size: 1.55rem; margin: 8px 0 12px; }
+    .purpose-card p { color: var(--muted); margin: 0; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .value-card { border: 1px solid var(--line); border-radius: 18px; padding: 24px; transition: transform .2s, box-shadow .2s; }
+    .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .value-card .value-icon { width: 46px; height: 46px; display: grid; place-items: center; background: #FFF5D6; border-radius: 14px; font-size: 1.3rem; margin-bottom: 17px; }
+    .value-card h3 { margin: 0 0 8px; color: var(--green-dark); font-size: 1.08rem; }
+    .value-card p { color: var(--muted); font-size: .94rem; margin: 0; }
+    .focus { background: var(--green-dark); color: #fff; }
+    .focus .section-head h2 { color: #fff; }
+    .focus .section-head p { color: #D5DFEA; }
+    .focus .eyebrow { color: var(--gold); }
+    .focus-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; }
+    .focus-card { padding: 23px 20px; border-radius: 17px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13); }
+    .focus-card .number { font-size: .76rem; color: var(--gold); font-weight: 850; letter-spacing: .12em; }
+    .focus-card h3 { margin: 13px 0 8px; font-size: 1.05rem; line-height: 1.3; }
+    .focus-card p { color: #D5DFEA; font-size: .89rem; margin: 0; }
+    .program-note { text-align: center; margin: 25px auto 0; max-width: 760px; color: #D5DFEA; font-size: .88rem; }
+    .involve { background: var(--cream); }
+    .involve-box { background: #fff; border: 1px solid #E2E6EB; border-radius: 26px; padding: 42px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 35px; align-items: center; box-shadow: var(--shadow); }
+    .involve-box h2 { font-size: clamp(1.9rem, 3vw, 2.7rem); color: var(--green-dark); letter-spacing: -.045em; line-height: 1.12; margin: 12px 0; }
+    .involve-box p { color: var(--muted); }
+    .ways { display: grid; gap: 12px; }
+    .way { display: flex; align-items: center; gap: 12px; padding: 13px 15px; border-radius: 13px; background: #F5F8FC; font-weight: 700; color: #252A31; }
+    .way span { color: var(--red); font-size: 1.1rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .contact-card { padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+    .contact-symbol { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 13px; background: #EAF3FE; color: var(--green); font-size: 1.35rem; margin-bottom: 16px; }
+    .contact-card h3 { color: var(--green-dark); margin: 0 0 10px; }
+    .contact-card a { display: block; color: var(--green); font-weight: 750; text-decoration: none; overflow-wrap: anywhere; margin: 5px 0; }
+    .contact-card a:hover { color: var(--red); }
+    .contact-card p { color: var(--muted); font-size: .91rem; margin: 10px 0 0; }
+    .contact-card .contact-detail { color: var(--green-dark); font-weight: 750; }
+    .social-panel { margin-top: 22px; padding: 30px; border-radius: 20px; background: #F5F8FC; display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 28px; }
+    .social-panel h3 { margin: 10px 0 8px; color: var(--green-dark); font-size: 1.45rem; }
+    .social-panel p { color: var(--muted); margin: 0; }
+    .social-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .social-links a { display: inline-flex; align-items: center; gap: 9px; padding: 11px 15px; background: #fff; border: 1px solid #DCE7F3; border-radius: 999px; text-decoration: none; font-weight: 750; font-size: .9rem; color: var(--green); }
+    .social-links a:hover { border-color: var(--green); transform: translateY(-1px); }
+    .social-links a.social-primary { background: var(--green); border-color: var(--green); color: #fff; }
+    footer { background: #171717; color: #D8DEE7; padding: 42px 0 22px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.14); }
+    .footer-brand { display: flex; align-items: center; gap: 13px; }
+    .footer-brand img { width: 62px; height: 62px; object-fit: contain; background: #fff; border-radius: 50%; padding: 4px; }
+    .footer-brand strong { display: block; color: #fff; font-size: 1.1rem; }
+    .footer-brand small { color: var(--gold); letter-spacing: .08em; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a { text-decoration: none; color: #D8DEE7; font-size: .9rem; }
+    .footer-bottom { padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .83rem; color: #AEB8C5; }
+    .footer-bottom strong { color: #fff; }
+    @media (max-width: 900px) {
+      .nav-links { gap: 15px; }
+      .hero-grid { gap: 30px; }
+      .focus-grid { grid-template-columns: repeat(2,1fr); }
+      .values-grid { grid-template-columns: repeat(2,1fr); }
+      .about-grid { gap: 32px; }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(100% - 30px, 560px); }
+      .topline .container { justify-content: center; text-align: center; }
+      .nav { min-height: 70px; }
+      .brand img { width: 47px; height: 47px; }
+      .brand-name { font-size: .9rem; }
+      .brand-name small { font-size: .59rem; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 69px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--line); padding: 16px 22px 22px; flex-direction: column; align-items: stretch; gap: 0; box-shadow: 0 16px 22px rgba(0,0,0,.06); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 4px; }
+      .nav-links .nav-cta { text-align: center; margin-top: 8px; }
+      .hero { padding: 55px 0 52px; }
+      .hero-grid, .about-grid, .purpose-grid, .involve-box { grid-template-columns: 1fr; }
+      .hero-grid { gap: 42px; }
+      h1 { font-size: clamp(2.65rem, 12vw, 4rem); }
+      .hero-copy { font-size: 1.02rem; }
+      .hero-art { max-width: 390px; width: 100%; margin: auto; }
+      .logo-halo { width: 86%; }
+      .floating-tag { left: 0; bottom: 3%; }
+      .quick-grid { grid-template-columns: 1fr; padding: 8px 0; }
+      .quick-item { justify-content: flex-start; border-right: 0; padding: 12px 8px; }
+      section { padding: 64px 0; }
+      .section-head { margin-bottom: 30px; }
+      .about-panel { min-height: 270px; }
+      .check-list { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .focus-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .focus-card { padding: 18px 15px; }
+      .involve-box { padding: 27px 22px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .social-panel { grid-template-columns: 1fr; padding: 24px 20px; }
+      .social-links a { font-size: .85rem; }
+      .footer-top { align-items: flex-start; flex-direction: column; }
+      .footer-bottom { flex-direction: column; }
+    }
+    @media (max-width: 400px) { .focus-grid { grid-template-columns: 1fr; } .hero-actions .btn { width: 100%; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="topline">
+    <div class="container">
+      <span><strong>CEDV</strong> — Children Education Development Vanguard</span>
+      <span>Empower. Educate. Inspire.</span>
+    </div>
+  </div>
+  <header>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="CEDV home">
+        <img src="assets/cedv-logo.png" alt="CEDV emblem">
+        <span class="brand-name">CEDV<small>EMPOWER · EDUCATE · INSPIRE</small></span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#purpose">Mission &amp; Vision</a>
+        <a href="#values">Our Values</a>
+        <a href="#focus">What We Do</a>
+        <a class="nav-cta" href="#get-involved">Partner with Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Learning today. Leading tomorrow.</span>
+          <h1>Every child deserves the chance to <span>thrive.</span></h1>
+          <p class="hero-copy">Children Education Development Vanguard (CEDV) is an educational and developmental organisation committed to enlightening, educating, inspiring and empowering school pupils and students.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#about">Discover CEDV <span aria-hidden="true">→</span></a>
+            <a class="btn btn-secondary" href="#get-involved">Get involved</a>
+          </div>
+          <p class="hero-note">Creating opportunities to learn, grow, lead and make a positive difference.</p>
+        </div>
+        <div class="hero-art">
+          <div class="logo-halo"><img src="assets/cedv-logo.png" alt="Children Education Development Vanguard official logo"></div>
+          <div class="floating-tag">A future full of possibility<span>Knowledge · Confidence · Leadership</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="quick-values" aria-label="CEDV guiding principles">
+      <div class="container quick-grid">
+        <div class="quick-item"><span class="quick-icon" aria-hidden="true">✦</span><div><strong>Empower</strong><small>Build confidence and potential</small></div></div>
+        <div class="quick-item"><span class="quick-icon" aria-hidden="true">▤</span><div><strong>Educate</strong><small>Open doors to useful knowledge</small></div></div>
+        <div class="quick-item"><span class="quick-icon" aria-hidden="true">✧</span><div><strong>Inspire</strong><small>Encourage positive action</small></div></div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-panel">
+          <div>
+            <div class="big-quote" aria-hidden="true">“</div>
+            <h3>Education goes beyond the classroom.</h3>
+            <p>Young people need opportunities to explore their abilities, share ideas, build confidence and prepare for meaningful futures.</p>
+          </div>
+          <div style="margin-top:28px;color:#f4d875;font-weight:800;letter-spacing:.08em;">EMPOWER. EDUCATE. INSPIRE.</div>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">Who we are</span>
+          <h2>Helping young people discover what they can become.</h2>
+          <p>CEDV complements classroom learning through educational programmes, workshops, seminars, mentorship initiatives, competitions, awareness campaigns and other developmental activities.</p>
+          <p>Through interactive learning, student-focused engagements, leadership development and community outreach, we aim to promote intellectual growth, positive values, creativity, informed decision-making and active participation in society.</p>
+          <ul class="check-list">
+            <li>Student-focused learning</li>
+            <li>Confidence and life skills</li>
+            <li>Leadership and mentorship</li>
+            <li>Community participation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="purpose" id="purpose">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our direction</span>
+          <h2>Purpose with a long-term vision.</h2>
+          <p>Our mission guides the work we do today. Our vision keeps us focused on the future we want to help create.</p>
+        </div>
+        <div class="purpose-grid">
+          <article class="purpose-card">
+            <span class="mini-label">01 / Our mission</span>
+            <h3>Our purpose in action</h3>
+            <p>To enlighten, educate, inspire and empower school pupils and students through engaging educational programmes, workshops, seminars, mentorship, competitions, awareness campaigns and other developmental initiatives that promote knowledge, confidence, essential life skills, leadership, creativity and responsible citizenship.</p>
+          </article>
+          <article class="purpose-card">
+            <span class="mini-label">02 / Our vision</span>
+            <h3>A generation ready to make a difference.</h3>
+            <p>To build a generation of knowledgeable, confident, responsible and empowered children and young people who realise their potential, pursue their aspirations and contribute meaningfully to the development of their communities and society.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="values">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What guides us</span>
+          <h2>Values that shape every initiative.</h2>
+          <p>These principles guide how CEDV works with learners, schools, partners and communities.</p>
+        </div>
+        <div class="values-grid">
+          <article class="value-card"><div class="value-icon" aria-hidden="true">📚</div><h3>Education and Knowledge</h3><p>Promoting continuous learning, intellectual development and access to useful knowledge.</p></article>
+          <article class="value-card"><div class="value-icon" aria-hidden="true">🌱</div><h3>Empowerment and Inclusion</h3><p>Encouraging every child and young person to recognise their worth, develop their abilities and access opportunities to grow.</p></article>
+          <article class="value-card"><div class="value-icon" aria-hidden="true">💡</div><h3>Creativity and Innovation</h3><p>Encouraging curiosity, independent thinking, problem-solving and new ideas.</p></article>
+          <article class="value-card"><div class="value-icon" aria-hidden="true">🧭</div><h3>Leadership and Responsibility</h3><p>Developing young people who can make informed decisions, take initiative and serve others responsibly.</p></article>
+          <article class="value-card"><div class="value-icon" aria-hidden="true">🤝</div><h3>Integrity and Accountability</h3><p>Acting honestly, fulfilling responsibilities and maintaining trust with children, schools, partners and communities.</p></article>
+          <article class="value-card"><div class="value-icon" aria-hidden="true">🌍</div><h3>Service and Positive Impact</h3><p>Working to improve the educational experiences, opportunities and development of children and young people.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="focus" id="focus">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our areas of focus</span>
+          <h2>More ways to learn, grow and lead.</h2>
+          <p>CEDV's programme directions are designed to respond to learners' interests, development needs and opportunities in their communities.</p>
+        </div>
+        <div class="focus-grid">
+          <article class="focus-card"><span class="number">01 / LEARN</span><h3>Educational Enlightenment</h3><p>Seminars, awareness programmes and educational talks.</p></article>
+          <article class="focus-card"><span class="number">02 / DEVELOP</span><h3>Skills and Personal Development</h3><p>Practical workshops, life-skills sessions and confidence-building activities.</p></article>
+          <article class="focus-card"><span class="number">03 / LEAD</span><h3>Leadership and Mentorship</h3><p>Leadership summits, mentorship programmes and career guidance.</p></article>
+          <article class="focus-card"><span class="number">04 / THINK</span><h3>Intellectual Development</h3><p>Quizzes, debates, essay competitions and academic contests.</p></article>
+          <article class="focus-card"><span class="number">05 / ADVOCATE</span><h3>Child and Youth Advocacy</h3><p>Girl-child empowerment, education awareness and student-focused campaigns.</p></article>
+          <article class="focus-card"><span class="number">06 / CELEBRATE</span><h3>Educational Celebrations</h3><p>Children's Day, International Day of the Girl Child and other relevant observances.</p></article>
+          <article class="focus-card"><span class="number">07 / CONNECT</span><h3>Community Engagement</h3><p>School visits, outreach programmes and community education initiatives.</p></article>
+          <article class="focus-card"><span class="number">08 / RECOGNISE</span><h3>Recognition and Encouragement</h3><p>Awards, certificates and recognition of learners' achievements.</p></article>
+        </div>
+        <p class="program-note">These are proposed and developing programme areas. They describe CEDV's intended direction and do not imply that every activity has already been implemented.</p>
+      </div>
+    </section>
+
+    <section class="involve" id="get-involved">
+      <div class="container">
+        <div class="involve-box">
+          <div>
+            <span class="eyebrow">Build impact with us</span>
+            <h2>Help create more opportunities for young people.</h2>
+            <p>CEDV welcomes conversations with schools, educators, volunteers, mentors, community organisations and potential partners who share a commitment to children's learning and development.</p>
+            <p>Whether through collaboration, knowledge-sharing, volunteering or in-kind support, every meaningful contribution can help a young person take the next step.</p>
+            <a class="btn btn-primary" href="#contact">Explore collaboration <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="ways" aria-label="Ways to collaborate">
+            <div class="way"><span aria-hidden="true">↗</span> School and community partnerships</div>
+            <div class="way"><span aria-hidden="true">✦</span> Volunteer and mentor participation</div>
+            <div class="way"><span aria-hidden="true">◎</span> Speakers and learning facilitators</div>
+            <div class="way"><span aria-hidden="true">＋</span> Sponsorship and in-kind support</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="padding-top:0;">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Start a conversation</span>
+          <h2>Let's work together for a brighter future.</h2>
+          <p>For school visits, programme enquiries, volunteering or partnership discussions, connect with the CEDV team through the official channels below.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card"><span class="contact-symbol" aria-hidden="true">✉</span><h3>Email</h3><a href="mailto:childreneduvanguard@gmail.com">childreneduvanguard@gmail.com</a><p>For enquiries, proposals and partnership conversations.</p></div>
+          <div class="contact-card"><span class="contact-symbol" aria-hidden="true">☎</span><h3>Call us</h3><a href="tel:+2348102767104">+234 810 276 7104</a><a href="tel:+2347074473190">+234 707 447 3190</a><p>Contact the team about CEDV activities and collaboration.</p></div>
+          <div class="contact-card"><span class="contact-symbol" aria-hidden="true">⌖</span><h3>Location</h3><p class="contact-detail">Ilorin, Kwara State, Nigeria</p><p>Connecting with schools and communities to support young people.</p></div>
+        </div>
+        <div class="social-panel">
+          <div><span class="eyebrow">Follow our journey</span><h3>Stay connected with CEDV.</h3><p>Follow our updates, educational activities and opportunities to get involved.</p></div>
+          <div class="social-links">
+            <a href="https://web.facebook.com/childreneducationdevelopmentvanguard" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a>
+            <a href="https://whatsapp.com/channel/0029VbDXSkJDOQIbXLePLE2D" target="_blank" rel="noopener noreferrer">WhatsApp Channel <span aria-hidden="true">↗</span></a>
+            <a href="https://www.tiktok.com/@cedvng" target="_blank" rel="noopener noreferrer">TikTok <span aria-hidden="true">↗</span></a>
+            <a class="social-primary" href="https://linktr.ee/CEDVng" target="_blank" rel="noopener noreferrer">All CEDV links <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/cedv-logo.png" alt="">
+          <div><strong>Children Education Development Vanguard</strong><small>EMPOWER. EDUCATE. INSPIRE.</small></div>
+        </div>
+        <div class="footer-links">
+          <a href="#about">About</a><a href="#purpose">Mission &amp; Vision</a><a href="#values">Values</a><a href="#focus">Areas of Focus</a><a href="#get-involved">Partner with Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Children Education Development Vanguard (CEDV). All rights reserved.</span>
+        <span>Built around learning, opportunity and positive impact.</span>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
